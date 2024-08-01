@@ -1,2 +1,3 @@
 aiohttp==3.9.5
 cmp-version==3.0.0
+fire==0.6.0
