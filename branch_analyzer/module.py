@@ -13,8 +13,8 @@ class BranchAnalyzer:
         """
         Asynchronous get packages data
         """
-        async with aiohttp.ClientSession() as session:
-            async with session.get(self.__url + branch, ) as response:
+        async with aiohttp.ClientSession(trust_env=True) as session:
+            async with session.get(self.__url + branch) as response:
                 return await response.json(), response.status == 200
 
     async def __analyse_branches(self, first_branch: str, second_branch: str) -> str:
