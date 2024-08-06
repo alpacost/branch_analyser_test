@@ -7,13 +7,13 @@ from cmp_version import VersionString
 
 
 class BranchAnalyzer:
-    __url: str = 'https://rdb.altlinux.org/api/export/branch_binary_packages/'
+    __url: str = 'http://rdb.altlinux.org/api/export/branch_binary_packages/'
 
     async def __get_branch_data(self, branch: str) -> tuple[dict, bool]:
         """
         Asynchronous get packages data
         """
-        async with aiohttp.ClientSession(trust_env=True) as session:
+        async with aiohttp.ClientSession() as session:
             async with session.get(self.__url + branch) as response:
                 return await response.json(), response.status == 200
 
